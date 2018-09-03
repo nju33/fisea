@@ -2,7 +2,7 @@
 
 [![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 [![fisea](https://img.shields.io/npm/v/fisea.svg)](https://www.npmjs.com/package/fisea)
-[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
+[![CircleCI](https://circleci.com/gh/nju33/fisea.svg?style=svg)](https://circleci.com/gh/nju33/fisea)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 A parser like the search part of Github.
