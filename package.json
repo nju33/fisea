@@ -8,6 +8,7 @@
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "scripts": {
+    "prepare": "yarn build",
     "build": "microbundle",
     "test": "jest"
   },
