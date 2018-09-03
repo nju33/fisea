@@ -2,25 +2,22 @@
   "name": "fisea",
   "version": "0.0.1",
   "description": "A parser like the search part of Github",
-  "main": "dist/fisea.umd.js",
-  "jsnext:main": "dist/fisea.es.js",
+  "main": "dist/fisea.js",
+  "umd:main": "dist/fisea.umd.js",
+  "module": "dist/fisea.m.js",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "start": "node dev-server.js",
-    "prepublish": "yarn prod",
-    "preprod": "mkdir -p dist; NODE_ENV='production' node prod.js",
-    "prod": "babili dist/fisea.js --no-comments --minified -o dist/fisea.min.js",
-    "_test": "xo && ava",
-    "test": "xo"
+    "build": "microbundle",
+    "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nju33/fisea.git"
-  },
+  "repository": "nju33:fisea",
   "keywords": [
-    "ui",
-    "browser",
-    "commonjs",
-    "es"
+    "search",
+    "keywords"
+  ],
+  "files": [
+    "dist"
   ],
   "author": "nju33",
   "license": "MIT",
@@ -28,65 +25,16 @@
     "url": "https://github.com/nju33/fisea/issues"
   },
   "homepage": "https://github.com/nju33/fisea#readme",
-  "publishConfig": {
-    "access": "public"
-  },
   "devDependencies": {
-    "autoprefixer": "^6.5.3",
-    "ava": "^0.18.2",
-    "babel-cli": "^6.23.0",
-    "babel-core": "^6.23.1",
-    "babel-eslint": "6",
-    "babel-helpers": "^6.23.0",
-    "babel-plugin-external-helpers": "^6.18.0",
-    "babel-plugin-transform-class-properties": "^6.19.0",
-    "babel-preset-env": "^1.2.1",
-    "babel-register": "^6.23.0",
-    "babili": "^0.0.9",
-    "browser-sync": "^2.18.2",
-    "cssnano": "^3.8.1",
-    "gulp": "^3.9.1",
-    "gulp-less": "^3.3.0",
-    "gulp-postcss": "^6.2.0",
-    "nightmare": "^2.8.1",
-    "postcss-easings": "^0.3.0",
-    "postcss-modules": "^0.5.2",
-    "rollup": "^0.36.4",
-    "rollup-plugin-babel": "^2.6.1",
-    "rollup-plugin-json": "^2.0.2",
-    "rollup-plugin-node-resolve": "^2.0.0",
-    "rollup-plugin-replace": "^1.1.1",
-    "rollup-plugin-string": "^2.0.2",
-    "rollup-plugin-svelte": "^1.0.0",
-    "xo": "^0.17.1"
-  },
-  "ava": {
-    "files": [
-      "test/specs/*.js"
-    ]
-  },
-  "xo": {
-    "env": [
-      "node",
-      "browser"
-    ],
-    "esnext": true,
-    "space": 2,
-    "ignores": [
-      "es/**"
-    ],
-    "parser": "babel-eslint",
-    "overrides": [
-      {
-        "files": "test/fixtures/*js",
-        "esnext": false,
-        "globals": [
-          "fisea"
-        ]
-      }
-    ]
-  },
-  "dependencies": {
-    "redux": "^3.6.0"
+    "@geekcojp/prettier-config": "^0.2.2",
+    "@geekcojp/tslint-config": "^0.2.1",
+    "@types/jest": "^23.3.1",
+    "jest": "^23.5.0",
+    "microbundle": "^0.6.0",
+    "prettier": "^1.14.2",
+    "ts-jest": "^23.1.4",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.3"
   }
 }

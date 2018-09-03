@@ -1,0 +1,2 @@
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t(e.fisea={})}(this,function(e){var t={separator:":"};e.parse=function(e,n){return void 0===n&&(n=t),e.split(/\s+/).reduce(function(e,t){var o=t.split(n.separator);if(1===o.length)void 0===e._&&(e._=[]),e._.push(o[0]);else{var i=o[0],r=o[1];void 0===e[i]&&(e[i]=[]),e[i].push(r)}return e},{})}});
+//# sourceMappingURL=fisea.umd.js.map

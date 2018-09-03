@@ -1,6 +1,9 @@
 # Fisea
 
-[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo) [![Build Status](https://travis-ci.org/nju33/fisea.svg?branch=master)](https://travis-ci.org/nju33/fisea)
+[![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
+[![fisea](https://img.shields.io/npm/v/fisea.svg)](https://www.npmjs.com/package/fisea)
+[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 A parser like the search part of Github.
 
@@ -8,34 +11,15 @@ A parser like the search part of Github.
 
 ```sh
 yarn add fisea
-npm i -S fisea
 ```
 
 ## Usage
 
-```js
-//# es
-// import Fisea from 'fisea';
-//# common
-// const Fisea = requrie('fisea');
+```ts
+import * as fisea from 'fisea';
 
-const fisea = new Fisea(['foo', 'bar']);
-const result = fisea.parse('aaa foo:hoge foo:fuga bar:piyo baz:hogehoge');
-console.log(result);
-// [
-//    _: [ 'aaa', 'baz:hogehoge' ],
-//   foo: [ 'hoge', 'fuga' ],
-//   bar: [ 'piyo' ]
-// ]
+fisea.parse('foo:foo text value');
+// {foo: ['foo'], _: ['text', 'value']};
+fisea.format({foo: ['foo'], _: ['text', 'value']})
+// 'foo:foo text value'
 ```
-
-## API
-
-- `constructor` keywords
-- `parse` search text
-
-## License
-
-The MIT License (MIT)
-
-Copyright (c) 2017 nju33 <nju33.ki@gmail.com>
