@@ -6,12 +6,10 @@ const defaultOptions = {
   separator: ':'
 };
 
-export function parse<T extends string>(
+export function parse(
   text: string,
   options: FiseaOptions = defaultOptions
-): Record<T, string[] | undefined> & {_?: string[]} & {
-  [k: string]: string[] | undefined;
-} {
+): {[k: string]: string[] | undefined} {
   const chunks = text.split(/\s+/);
 
   return chunks.reduce(
@@ -34,8 +32,6 @@ export function parse<T extends string>(
 
       return result;
     },
-    {} as Record<T, string[] | undefined> & {_?: string[]} & {
-      [k: string]: string[] | undefined;
-    }
+    {} as {[k: string]: string[] | undefined}
   );
 }

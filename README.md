@@ -15,14 +15,23 @@ yarn add fisea
 
 ## Usage
 
+### on nodejs
+
 ```ts
 import * as fisea from 'fisea';
 
-const result = fisea.parse<'foo'>('foo:foo text value');
+fisea.parse('foo:foo text value');
 // {foo: ['foo'], _: ['text', 'value']};
-result.foo;
-result._;
-
 fisea.format({foo: ['foo'], _: ['text', 'value']})
 // 'foo:foo text value'
 ```
+
+### on browser
+
+```html
+<script src="https://unpkg.com/fisea@1.0.0/dist/fisea.umd.js"></script>
+```
+
+## Options
+
+`separator` default`:`
