@@ -18,8 +18,11 @@ yarn add fisea
 ```ts
 import * as fisea from 'fisea';
 
-fisea.parse('foo:foo text value');
+const result = fisea.parse<'foo'>('foo:foo text value');
 // {foo: ['foo'], _: ['text', 'value']};
+result.foo;
+result._;
+
 fisea.format({foo: ['foo'], _: ['text', 'value']})
 // 'foo:foo text value'
 ```
