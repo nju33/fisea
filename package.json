@@ -1,6 +1,6 @@
 {
   "name": "fisea",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A parser like the search part of Github",
   "main": "dist/fisea.js",
   "umd:main": "dist/fisea.umd.js",
