@@ -4,6 +4,7 @@
 [![fisea](https://img.shields.io/npm/v/fisea.svg)](https://www.npmjs.com/package/fisea)
 [![CircleCI](https://circleci.com/gh/nju33/fisea.svg?style=svg)](https://circleci.com/gh/nju33/fisea)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![donate](https://badgen.net/badge/Donate%20via%20PayPal/$3.00/169bd7)](https://www.paypal.me/nju33/3USD)
 
 A parser like the search part of Github.
 
