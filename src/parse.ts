@@ -10,7 +10,11 @@ export function parse(
   text: string,
   options: FiseaOptions = defaultOptions
 ): {[k: string]: string[] | undefined} {
-  const chunks = text.split(/\s+/);
+  const chunks = text
+    .replace(/'.*?'|".*?"/g, match => match.replace(/\s/g, '_____'))
+    .split(/\s+/)
+    .map(chunk => chunk.replace(/_____/g, ' '))
+    .map(chunk => chunk.replace(/'|"/g, ''));
 
   return chunks.reduce(
     (result, chunk) => {
@@ -23,11 +27,21 @@ export function parse(
         result._.push(splitted[0]);
       } else {
         const [prop, value] = splitted;
+        let camelcaseProp = null;
         if (result[prop] === undefined) {
           result[prop] = [];
+          if (/-/.test(prop)) {
+            camelcaseProp = prop.replace(/-\w/, match =>
+              match.slice(1).toUpperCase()
+            );
+            result[camelcaseProp] = [];
+          }
         }
 
         (result[prop] as any).push(value);
+        if (camelcaseProp !== null) {
+          (result[camelcaseProp] as any).push(value);
+        }
       }
 
       return result;

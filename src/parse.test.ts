@@ -1,16 +1,21 @@
 import {parse} from './parse';
 
 describe('fisea.parse', () => {
-  test('foo:foo bar:bar bar:bar2 hoge', () => {
-    const result = parse('foo:foo bar:bar bar:bar2 hoge');
+  test('foo:foo bar:bar bar-baz:"bar baz" hoge', () => {
+    const result = parse('foo:foo bar:bar bar-baz:"bar baz" hoge');
     expect(result).toHaveProperty('foo');
     expect(result).toHaveProperty('bar');
+    expect(result).toHaveProperty('bar-baz');
+    expect(result).toHaveProperty('barBaz');
     expect(result).not.toHaveProperty('baz');
     expect(result).toHaveProperty('_');
-    expect(Object.keys(result).length).toBe(3);
+    expect(Object.keys(result).length).toBe(5);
 
+    console.log(JSON.stringify(result))
     expect(result.foo).toMatchObject(['foo'])
-    expect(result.bar).toMatchObject(['bar', 'bar2']);
+    expect(result.bar).toMatchObject(['bar'])
+    expect(result['bar-baz']).toMatchObject(['bar baz']);
+    expect(result.barBaz).toMatchObject(['bar baz']);
     expect(result._).toMatchObject(['hoge']);
   });
 });

@@ -1,19 +1,34 @@
 export function format(parsed: {[k: string]: string[]}): string {
   const keys = Object.keys(parsed);
 
-  const result = keys.reduce((result, key) => {
-    const chunk = parsed[key]
-      .map(value => {
-        if (key === '_') {
-          return value;
-        }
+  const stringResult = keys
+    .filter(key => !/[A-Z]/.test(key))
+    .reduce((result, key) => {
+      const chunk = parsed[key]
+        .map(value => {
+          if (key === '_') {
+            return value;
+          }
 
-        return `${key}:${value}`;
-      })
-      .join(' ');
-    result += ` ${chunk}`;
-    return result;
-  }, '');
+          if (/[A-Z]/.test(key)) {
+            const chaincaseKey = key.replace(
+              /[A-Z]/g,
+              match => `-${match.toLowerCase()}`
+            );
+          }
 
-  return result.trim();
+          let realValue = value;
+          if (/\s/.test(value)) {
+            realValue = `"${value}"`;
+          }
+
+          return `${key}:${realValue}`;
+        })
+        .join(' ');
+
+      const nextString = `${result} ${chunk}`;
+      return nextString;
+    }, '');
+
+  return stringResult.trim();
 }

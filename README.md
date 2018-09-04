@@ -20,16 +20,22 @@ yarn add fisea
 ```ts
 import * as fisea from 'fisea';
 
-fisea.parse('foo:foo text value');
-// {foo: ['foo'], _: ['text', 'value']};
-fisea.format({foo: ['foo'], _: ['text', 'value']})
-// 'foo:foo text value'
+fisea.parse('foo:foo bar:bar bar-baz:"bar baz" hoge');
+// {foo:["foo"], bar:["bar"], "bar-baz":["bar baz"], barBaz:["bar baz"], _:["hoge"]}
+fisea.format({
+  foo: ['foo'],
+  bar: ['bar'],
+  'bar-baz': ['bar baz'],
+  barBaz: ['bar baz'],
+  _: ['hoge']
+});
+// 'foo:foo bar:bar bar-baz:"bar baz" hoge'
 ```
 
 ### on browser
 
 ```html
-<script src="https://unpkg.com/fisea@1.0.0/dist/fisea.umd.js"></script>
+<script src="https://unpkg.com/fisea/dist/fisea.umd.js"></script>
 ```
 
 ## Options
