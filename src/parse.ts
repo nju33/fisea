@@ -3,12 +3,17 @@ export interface FiseaOptions {
 }
 
 const defaultOptions = {
-  separator: ':'
+  separator: ':',
 };
 
+
+/**
+ * @param text to parse
+ * @param options fisea options
+ */
 export function parse(
   text: string,
-  options: FiseaOptions = defaultOptions
+  options: FiseaOptions = defaultOptions,
 ): {[k: string]: string[] | undefined} {
   const chunks = text
     .replace(/'.*?'|".*?"/g, match => match.replace(/\s/g, '_____'))
@@ -32,7 +37,7 @@ export function parse(
           result[prop] = [];
           if (/-/.test(prop)) {
             camelcaseProp = prop.replace(/-\w/, match =>
-              match.slice(1).toUpperCase()
+              match.slice(1).toUpperCase(),
             );
             result[camelcaseProp] = [];
           }
@@ -46,6 +51,6 @@ export function parse(
 
       return result;
     },
-    {} as {[k: string]: string[] | undefined}
+    {} as {[k: string]: string[] | undefined},
   );
 }

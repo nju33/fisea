@@ -2,15 +2,21 @@
   "name": "fisea",
   "version": "1.1.1",
   "description": "A parser like the search part of Github",
-  "main": "dist/fisea.js",
-  "umd:main": "dist/fisea.umd.js",
-  "module": "dist/fisea.m.js",
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "types": "dist/types/index.d.ts",
   "source": "src/index.ts",
-  "types": "dist/index.d.ts",
   "scripts": {
     "prepare": "yarn build",
-    "build": "microbundle",
-    "test": "jest"
+    "test": "jest",
+    "typedoc": "typedoc --theme minimal --out docs src/index.ts --ignoreCompilerErrors",
+    "build.main": "tsc -P tsconfig.main.json",
+    "build.module": "tsc -P tsconfig.module.json",
+    "build.types": "tsc -P tsconfig.types.json --emitDeclarationOnly",
+    "build.iife": "yarn build.iife.tsc && yarn build.iife.rollup",
+    "build.iife.tsc": "tsc -P tsconfig.iife.json",
+    "build.iife.rollup": "rollup iife-dist/iife.js --format iife --name fisea --file fisea.js",
+    "build": "yarn build.main && yarn build.module && yarn build.types && yarn build.iife"
   },
   "repository": "nju33:fisea",
   "keywords": [
@@ -18,7 +24,8 @@
     "keywords"
   ],
   "files": [
-    "dist"
+    "dist",
+    "fisea.js"
   ],
   "author": "nju33",
   "license": "MIT",
@@ -27,15 +34,20 @@
   },
   "homepage": "https://github.com/nju33/fisea#readme",
   "devDependencies": {
-    "@geekcojp/prettier-config": "^0.2.2",
+    "@geekcojp/prettier-config": "^0.3.0",
     "@geekcojp/tslint-config": "^0.2.1",
-    "@types/jest": "^23.3.1",
-    "jest": "^23.5.0",
-    "microbundle": "^0.6.0",
-    "prettier": "^1.14.2",
-    "ts-jest": "^23.1.4",
-    "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
-    "typescript": "^3.0.3"
+    "@nju33/prettier": "^0.0.6",
+    "@nju33/tsconfig-main": "^0.0.6",
+    "@nju33/tsconfig-module": "^0.0.6",
+    "@nju33/tsconfig-types": "^0.0.6",
+    "@nju33/tslint": "^0.0.6",
+    "@types/jest": "^23.3.12",
+    "jest": "^23.6.0",
+    "prettier": "^1.15.3",
+    "rollup": "^1.1.0",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.12.1",
+    "typedoc": "^0.14.1",
+    "typescript": "^3.2.2"
   }
 }

@@ -11,9 +11,8 @@ describe('fisea.parse', () => {
     expect(result).toHaveProperty('_');
     expect(Object.keys(result).length).toBe(5);
 
-    console.log(JSON.stringify(result))
-    expect(result.foo).toMatchObject(['foo'])
-    expect(result.bar).toMatchObject(['bar'])
+    expect(result.foo).toMatchObject(['foo']);
+    expect(result.bar).toMatchObject(['bar']);
     expect(result['bar-baz']).toMatchObject(['bar baz']);
     expect(result.barBaz).toMatchObject(['bar baz']);
     expect(result._).toMatchObject(['hoge']);

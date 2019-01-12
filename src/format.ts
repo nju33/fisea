@@ -1,34 +1,54 @@
-export function format(parsed: {[k: string]: string[]}): string {
+const KEYLESS_SYMBOL = '_';
+
+/**
+ * @param parsed object to format
+ */
+export function format(parsed: {[x: string]: string[]}): string {
   const keys = Object.keys(parsed);
 
-  const stringResult = keys
-    .filter(key => !/[A-Z]/.test(key))
-    .reduce((result, key) => {
-      const chunk = parsed[key]
-        .map(value => {
-          if (key === '_') {
-            return value;
-          }
+  const normalizedAndUniqKeys = Array.from(
+    keys.reduce((acc, key) => {
+      let currentKey = key;
+      if (/[A-Z]/.test(key)) {
+        currentKey = key.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`);
+        parsed[currentKey] = parsed[key];
+      }
 
-          if (/[A-Z]/.test(key)) {
-            const chaincaseKey = key.replace(
-              /[A-Z]/g,
-              match => `-${match.toLowerCase()}`
-            );
-          }
+      return acc.add(currentKey);
+    }, new Set<string>()),
+  );
 
-          let realValue = value;
-          if (/\s/.test(value)) {
-            realValue = `"${value}"`;
-          }
+  const stringResult = normalizedAndUniqKeys.reduce((result, key) => {
+    // tslint:disable-next-line:no-typeof-undefined
+    if (typeof parsed[key] === 'undefined') {
+      return result;
+    }
 
-          return `${key}:${realValue}`;
-        })
-        .join(' ');
+    if (key === KEYLESS_SYMBOL) {
+      return result + ` ${parsed[key]}`;
+    }
 
-      const nextString = `${result} ${chunk}`;
-      return nextString;
-    }, '');
+    const dictionary = parsed[key].reduce(
+      (acc, value) => {
+        let realValue = value;
+        if (/\s/.test(value)) {
+          realValue = `"${value}"`;
+        }
+
+        acc[key] = realValue;
+        return acc;
+      },
+      {} as {[x: string]: string},
+    );
+
+    const chunk = Object.keys(dictionary)
+      .map(realProp => {
+        return `${realProp}:${dictionary[realProp]}`;
+      })
+      .join(' ');
+
+    return `${result} ${chunk}`;
+  }, '');
 
   return stringResult.trim();
 }
