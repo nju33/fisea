@@ -195,10 +195,10 @@
   dependencies:
     "@nju33/tsconfig-base" "^0.0.7"
 
-"@nju33/tslint@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@nju33/tslint/-/tslint-0.0.7.tgz#25bd8abc73a4dc92c8c4b098f2a0631fa1a522e7"
-  integrity sha512-SQUmQUQwOah2W3kvU7JGM9XlGZ/YK8MW2vV+PXvz9A9Lg1pleE9dp9YsewM8MXOETHY6InlH8s94fYzlBg5BVQ==
+"@nju33/tslint@0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@nju33/tslint/-/tslint-0.0.11.tgz#9d004906781fe7271733d49807c059bf70e90b29"
+  integrity sha512-0q9a02FrAyb4XbzByegjzpZRsP/M+oKG3hsO8WvDxvz1Gs9rezDnH7R/sOmxE3WFcLuaod72Awaa8gP2W8HCsA==
   dependencies:
     tslint-config-prettier "^1.17.0"
     tslint-xo "^0.16.0"
