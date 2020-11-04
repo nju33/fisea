@@ -42,7 +42,7 @@
     "@nju33/tsconfig-types": "0.0.26",
     "@nju33/tslint": "0.0.26",
     "@types/jest": "23.3.14",
-    "jest": "23.6.0",
+    "jest": "26.6.3",
     "prettier": "1.19.1",
     "renovate-config-nju33": "0.0.1",
     "rollup": "1.32.1",
